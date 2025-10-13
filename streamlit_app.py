@@ -30,7 +30,7 @@ for i in range(number):
 
     amount_of_wallet = number
     if amount_of_wallet > 0 and st.session_state[customise_pressed]:
-        st.image(['https://pngimg.com/uploads/wallet/wallet_PNG77078.png', "https://toppng.com/uploads/preview/leather-wallet-11530960452p1ggvjjey4.png"], caption = ['small', "medium"], width = [100])
+        st.image(['https://pngimg.com/uploads/wallet/wallet_PNG77078.png', "https://toppng.com/uploads/preview/leather-wallet-11530960452p1ggvjjey4.png"], caption = ['small', "medium"], width = 100)
       
         size = st.selectbox("Select a size", ["small", "medium", "large"], key="size" + str(i)) #reyna's code + for loop for customers to customise each wallet
         if size == "medium":
