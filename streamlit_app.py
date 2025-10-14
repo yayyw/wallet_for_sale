@@ -70,7 +70,7 @@ for i in range(number):
 
 st.header("Your Cart")
 for i,custom in enumerate(st.session_state["cart"],1):
-    st.write("Wallet {}:{}".format(i,custom)
+    st.write("Wallet {}:{}".format(i,custom))
 
 st.write("Your total =", price_of_wallet)
 
