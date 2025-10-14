@@ -7,6 +7,8 @@ number = st.number_input("Enter the quantity of wallets, $20 each",min_value=0, 
 price_of_wallet = number*20
 
 #discount price for tiered pricing 
+if "cart" not in t.session_state:
+    t.session_state["cart"]=[]
 
 for i in range(number):
     st.subheader("Wallet " + str(i + 1))
@@ -52,7 +54,6 @@ for i in range(number):
         else:
             st.write("Canvas adds $0")
 
-        #add colour picker
     
         if st.button("Add engraving", key = "engrave_button" + str(i)):
             st.session_state[engraving_pressed] = True
@@ -61,8 +62,15 @@ for i in range(number):
             engraving_text = st.text_input("What would you like engraved?", key="engraving_text" + str(i))
             st.write("Engraving adds $10")
             price_of_wallet += 10
+            
+        if st.session_state[customise_pressed] and st.button("Add to cart", key=add_cart+str(i)):
+            wallet_details = {quantity:1,"size":size,"material":choice,"engravement":engraving_text}
+            st.session_state["cart"].append(wallet_details)
+            st.success("Wallet {i+1} added to cart!")
 
-#add cart, use dict
+st.header("Your Cart")
+for i,custom in enumerate(st.session_state["cart"],1):
+    st.write("Wallet {}:{}".format(i,custom)
 
 st.write("Your total =", price_of_wallet)
 
