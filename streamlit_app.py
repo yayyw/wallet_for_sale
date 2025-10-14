@@ -7,8 +7,8 @@ number = st.number_input("Enter the quantity of wallets, $20 each",min_value=0, 
 price_of_wallet = number*20
 
 #discount price for tiered pricing 
-if "cart" not in t.session_state:
-    t.session_state["cart"]=[]
+if "cart" not in st.session_state:
+    st.session_state["cart"]=[]
 
 for i in range(number):
     st.subheader("Wallet " + str(i + 1))
