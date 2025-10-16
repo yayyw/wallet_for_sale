@@ -75,13 +75,14 @@ for i in range(number):
             st.success("Wallet {} added to cart!".format(i+1))
 
 #Discounts
+from collections import Counter
 discounted_price = 0
 if price_of_wallet > 300:
     discounted_price = 0.9(price_of_wallet)
 if 'leather' and 'nylon' in list_of_materials:
     discounted_price = 0.85(price_of_wallet)
 number_of_each_material = Counter(list_of_materials)
-from collections import Counter
+
 
 material_counts = Counter(list_of_materials)
 
