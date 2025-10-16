@@ -11,7 +11,7 @@ if "cart" not in st.session_state:
 
 list_of_materials = []
 list_of_wallet_prices = []
-
+total_price = 0
 for i in range(number):
     price_of_wallet = 20
     st.subheader("Wallet " + str(i + 1))
