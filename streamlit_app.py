@@ -69,7 +69,7 @@ for i in range(number):
             
         list_of_wallet_prices.append(price_of_wallet)
         
-if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart"+str(i)):
+if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart"):
     wallet_details = {"quantity":1,"size":size,"material":choice,"engravement":engraving_text}
     st.session_state["cart"].append(wallet_details)
     st.success("Wallet {} added to cart!".format(i+1))
