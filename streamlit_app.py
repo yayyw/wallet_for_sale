@@ -94,6 +94,7 @@ for i, custom in enumerate(st.session_state["cart"], 1):
     
 with st.sidebar:
     st.write("Your total =", total_price)
+    st.write("Total after discount=", discounted_price)
     st.button("Purchase")
     st.header("Your Cart")
 
