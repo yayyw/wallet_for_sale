@@ -59,7 +59,7 @@ for i in range(number):
     
         if st.button("Add engraving", key = "engrave_button" + str(i)):
             st.session_state[engraving_pressed] = True
-
+        engraving_text = ""
         if st.session_state[engraving_pressed]:
             engraving_text = st.text_input("What would you like engraved?", key="engraving_text" + str(i))
             st.write("Engraving adds $10")
