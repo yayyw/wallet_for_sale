@@ -94,7 +94,10 @@ for i, custom in enumerate(st.session_state["cart"], 1):
     
 with st.sidebar:
     st.header("Your Cart")
-    st.write("wallet details", wallet_details)
+    if "cart" in st.session_state and len(st.session_state["cart"]) > 0:
+        st.write("Wallet details:", st.session_state["cart"])
+    else:
+        st.write("No wallets added to cart yet.")
     st.write("Your total =", total_price)
     st.write("Total after discount=", discounted_price)
     st.button("Purchase")
