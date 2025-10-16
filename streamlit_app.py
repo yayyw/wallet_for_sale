@@ -103,5 +103,8 @@ with st.sidebar:
     st.button("Purchase")
     
 
+file_name = "customer_data.txt"
+with open(file_name, "w") as file:
+    file.write("This is a new file created using open().")
 
 
