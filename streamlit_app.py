@@ -8,7 +8,7 @@ price_of_wallet = number*20
 
 #discount price for tiered pricing 
 if "cart" not in st.session_state:
-    st.session_state["cart"]=[]
+    st.session_state["cart"]= False
 
 list_of_materials = []
 list_of_wallet_prices = []
@@ -89,10 +89,15 @@ material_counts = Counter(list_of_materials)
 if material_counts['leather'] >= 2 and len(list_of_materials) >= 3:
     discounted_price = price_of_wallet - 0.5*(list_of_wallet_prices[2])
 
-    st.header("Your Cart")
+add_selectbox = st.sidebar.selection('Cart')
+
 for i,custom in enumerate(st.session_state["cart"],1):
     st.write("Wallet {}:{}".format(i,custom))
 
-st.write("Your total =", price_of_wallet)
+with st.sidebar:
+    st.write("Your total =", price_of_wallet)
+    st.button("Purchase")
+    st.header("Your Cart")
 
-st.button("Purchase")
+
+
