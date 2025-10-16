@@ -4,16 +4,16 @@ import streamlit as st
 st.title("buy your wallet!!")
 
 number = st.number_input("Enter the quantity of wallets, $20 each",min_value=0, max_value=10, step=1, key="wallets")
-price_of_wallet = number*20
 
 #discount price for tiered pricing 
 if "cart" not in st.session_state:
-    st.session_state["cart"]= False
+    st.session_state["cart"]= []
 
 list_of_materials = []
 list_of_wallet_prices = []
 
 for i in range(number):
+    price_of_wallet = 20
     st.subheader("Wallet " + str(i + 1))
     customise = ['size', 'material', 'colour', 'engraving'] #add colours appeal to more ages bro idk anymore, list
     
@@ -56,8 +56,6 @@ for i in range(number):
             price_of_wallet += 25
         else:
             st.write("Canvas adds $0")
-
-        list_of_materials.append(choice)
     
         if st.button("Add engraving", key = "engrave_button" + str(i)):
             st.session_state[engraving_pressed] = True
@@ -66,34 +64,36 @@ for i in range(number):
             engraving_text = st.text_input("What would you like engraved?", key="engraving_text" + str(i))
             st.write("Engraving adds $10")
             price_of_wallet += 10
-            
-        list_of_wallet_prices.append(price_of_wallet)
+
+        total_price += price_of_wallet
         
         if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart" + str(i)):
             wallet_details = {"quantity":1,"size":size,"material":choice,"engravement":engraving_text}
+            list_of_wallet_prices.append(price_of_wallet)
+            list_of_materials.append(choice)
             st.session_state["cart"].append(wallet_details)
             st.success("Wallet {} added to cart!".format(i+1))
 
 #Discounts
 from collections import Counter
 discounted_price = 0
-if price_of_wallet > 200:
-    discounted_price = 0.9*(price_of_wallet)
-if 'leather' and 'nylon' in list_of_materials:
-    discounted_price = 0.85*(price_of_wallet)
+if total_price > 200:
+    discounted_price = 0.9*(total_price)
+if 'leather' in list_of_materials and 'nylon' in list_of_materials:
+    discounted_price = 0.85*(total_price)
 number_of_each_material = Counter(list_of_materials)
 
 
 material_counts = Counter(list_of_materials)
 
-if material_counts['leather'] >= 2 and len(list_of_materials) >= 3:
-    discounted_price = price_of_wallet - 0.5*(list_of_wallet_prices[2])
+if material_counts['leather'] >= 2 and len(list_of_wallet_prices) >= 3:
+    discounted_price = total_price - 0.5*(list_of_wallet_prices[2])
 
 for i, custom in enumerate(st.session_state["cart"], 1):
     st.write(f"Wallet {i}: {custom}")
     
 with st.sidebar:
-    st.write("Your total =", price_of_wallet)
+    st.write("Your total =", total_price)
     st.button("Purchase")
     st.header("Your Cart")
 
