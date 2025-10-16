@@ -89,9 +89,9 @@ material_counts = Counter(list_of_materials)
 if material_counts['leather'] >= 2 and len(list_of_materials) >= 3:
     discounted_price = price_of_wallet - 0.5*(list_of_wallet_prices[2])
 
-for i,custom in enumerate(st.session_state["cart"],1):
-    st.write("Wallet {}:{}".format(i,custom))
-
+for i, custom in enumerate(st.session_state["cart"], 1):
+    st.write(f"Wallet {i}: {custom}")
+    
 with st.sidebar:
     st.write("Your total =", price_of_wallet)
     st.button("Purchase")
