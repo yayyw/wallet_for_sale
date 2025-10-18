@@ -72,7 +72,7 @@ for i in range(number):
             wallet_details = {"size":size,"material":choice,"engravement":engraving_text}
             list_of_wallet_prices.append(price_of_wallet)
             list_of_materials.append(choice)
-            if wallet not in st.session_state["cart"]:
+            if wallet_details not in st.session_state["cart"]:
                 st.session_state["cart"].append(wallet_details)
                 st.success("Wallet {} added to cart!".format(i+1))
             else:
