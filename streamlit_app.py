@@ -66,9 +66,9 @@ for i in range(number):
             st.write("Engraving adds $10")
             price_of_wallet += 10
 
-        total_price += price_of_wallet
         
         if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart" + str(i)):
+            total_price += price_of_wallet
             wallet_details = {"size":size,"material":choice,"engravement":engraving_text}
             list_of_wallet_prices.append(price_of_wallet)
             list_of_materials.append(choice)
