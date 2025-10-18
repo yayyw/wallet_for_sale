@@ -19,6 +19,8 @@ for i in range(number):
 
     url = 'https://imgur.com/a/Wt7HBGB'
     st.image(url, width = 300)
+    st.image("https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png")
+
 
     st.write('customisations available:')
     for item in customise: #for loop
