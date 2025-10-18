@@ -17,7 +17,8 @@ for i in range(number):
     st.subheader("Wallet " + str(i + 1))
     customise = ['size', 'material', 'engraving'] 
 
-    st.image(https://imgur.com/a/Wt7HBGB, width = 300)
+    url = 'https://imgur.com/a/Wt7HBGB'
+    st.image(url, width = 300)
 
     st.write('customisations available:')
     for item in customise: #for loop
