@@ -34,7 +34,7 @@ for i in range(number):
 
     amount_of_wallet = number
     if amount_of_wallet > 0 and st.session_state[customise_pressed]:
-        st.image(['https://drive.google.com/file/d/1q_C4suR8h5XpX0i86oHC7IQCPio6FGN7/view?usp=drive_link', width = 300)
+        st.image('https://drive.google.com/file/d/1q_C4suR8h5XpX0i86oHC7IQCPio6FGN7/view?usp=drive_link', width = 300)
       
         size = st.selectbox("Select a size", ["small", "medium", "large"], key="size" + str(i)) #reyna's code + for loop for customers to customise each wallet
         if size == "medium":
