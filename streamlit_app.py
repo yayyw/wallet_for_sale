@@ -1,6 +1,5 @@
 import streamlit as st
 
-
 st.title("buy your wallet!!")
 
 number = st.number_input("Enter the quantity of wallets, $20 each",min_value=0, max_value=10, step=1, key="wallets")
@@ -73,7 +72,7 @@ for i in range(number):
             list_of_wallet_prices.append(price_of_wallet)
             list_of_materials.append(choice)
             st.session_state["cart"].append(wallet_details)
-            st.success("Wallet {} added to cart!".format(i+1))
+            st.success("Wallet {} added to cart!".format(i+1)) #add to cart
 
 
 #Discounts
