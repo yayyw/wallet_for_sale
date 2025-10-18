@@ -16,6 +16,11 @@ for i in range(number):
     price_of_wallet = 20
     st.subheader("Wallet " + str(i + 1))
     customise = ['size', 'material', 'colour', 'engraving'] #add colours appeal to more ages bro idk anymore, list
+
+    file_id='1q_C4suR8h5XpX0i86oHC7IQCPio6FGN7'
+    url = f'https://drive.google.com/uc?export=view&id={file_id}'
+    st.image(url)
+
     
     st.write('customisations available:')
     for item in customise: #for loop
@@ -34,7 +39,6 @@ for i in range(number):
 
     amount_of_wallet = number
     if amount_of_wallet > 0 and st.session_state[customise_pressed]:
-        st.image('https://drive.google.com/file/d/1q_C4suR8h5XpX0i86oHC7IQCPio6FGN7/view?usp=drive_link', width = 300)
       
         size = st.selectbox("Select a size", ["small", "medium", "large"], key="size" + str(i)) #reyna's code + for loop for customers to customise each wallet
         if size == "medium":
