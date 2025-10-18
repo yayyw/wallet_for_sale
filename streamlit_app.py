@@ -5,7 +5,14 @@ st.title("buy your wallet!!")
 
 number = st.number_input("Enter the quantity of wallets, $20 each",min_value=0, max_value=10, step=1, key="wallets")
 
-#discount price for tiered pricing 
+customise = ['size', 'material', 'engraving'] 
+
+st.image("https://i.imgur.com/C88SG8i.jpeg")
+
+st.write('customisations available:')
+for item in customise: #for loop
+    st.write(item)
+    
 if "cart" not in st.session_state:
     st.session_state["cart"]= []
 
@@ -15,13 +22,6 @@ total_price = 0
 for i in range(number):
     price_of_wallet = 20
     st.subheader("Wallet " + str(i + 1))
-    customise = ['size', 'material', 'engraving'] 
-
-    st.image("https://i.imgur.com/C88SG8i.jpeg")
-
-    st.write('customisations available:')
-    for item in customise: #for loop
-        st.write(item)
 
     customise_pressed = "customise_pressed" + str(i)
     engraving_pressed = "engraving_pressed" + str(i)
