@@ -15,9 +15,9 @@ total_price = 0
 for i in range(number):
     price_of_wallet = 20
     st.subheader("Wallet " + str(i + 1))
-    customise = ['size', 'material', 'colour', 'engraving'] #add colours appeal to more ages bro idk anymore, list
+    customise = ['size', 'material', 'engraving'] 
 
-    st.image('https://drive.google.com/uc?export=view&id=1q_C4suR8h5XpX0i86oHC7IQCPio6FGN7', width = 300)
+    st.image('https://imgur.com/a/Wt7HBGB', width = 300)
 
     st.write('customisations available:')
     for item in customise: #for loop
