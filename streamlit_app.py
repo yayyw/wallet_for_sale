@@ -17,7 +17,7 @@ for i in range(number):
     st.subheader("Wallet " + str(i + 1))
     customise = ['size', 'material', 'colour', 'engraving'] #add colours appeal to more ages bro idk anymore, list
 
-    st.image('https://drive.google.com/uc?export=view&id=1q_C4suR8h5XpX0i86oHC7IQCPio6FGN7')
+    st.image('https://drive.google.com/uc?export=view&id=1q_C4suR8h5XpX0i86oHC7IQCPio6FGN7', width = 300)
 
     st.write('customisations available:')
     for item in customise: #for loop
@@ -89,14 +89,15 @@ material_counts = Counter(list_of_materials)
 
 if material_counts['leather'] >= 2 and len(list_of_wallet_prices) >= 3:
     discounted_price = total_price - 0.5*(list_of_wallet_prices[2])
-
-for i, custom in enumerate(st.session_state["cart"], 1):
-    st.write(f"Wallet {i}: {custom['size']},{custom['material']},{custom['engravement']}")
     
 with st.sidebar:
     st.header("Your Cart")
     if "cart" in st.session_state and len(st.session_state["cart"]) > 0:
-        st.write("Wallet details:", st.session_state["cart"])
+        for i, custom in enumerate(st.session_state["cart"], 1):
+            if custom['engravement']:
+                st.write(f"Wallet {i}: {custom['size']},{custom['material']},{custom['engravement']}")
+            else:
+                st.write(f"Wallet {i}: {custom['size']},{custom['material']}")
     else:
         st.write("No wallets added to cart yet.")
     st.write("Your total =", total_price)
