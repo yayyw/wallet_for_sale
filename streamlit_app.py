@@ -72,8 +72,12 @@ for i in range(number):
             wallet_details = {"size":size,"material":choice,"engravement":engraving_text}
             list_of_wallet_prices.append(price_of_wallet)
             list_of_materials.append(choice)
-            st.session_state["cart"].append(wallet_details)
-            st.success("Wallet {} added to cart!".format(i+1))
+            if wallet not in st.session_state["cart"]:
+                st.session_state["cart"].append(wallet_details)
+                st.success("Wallet {} added to cart!".format(i+1))
+            else:
+                st.warning("This wallet is already in your cart.")
+
 
 #Discounts
 from collections import Counter
