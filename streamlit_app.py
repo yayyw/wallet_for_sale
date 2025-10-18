@@ -17,7 +17,7 @@ for i in range(number):
     st.subheader("Wallet " + str(i + 1))
     customise = ['size', 'material', 'colour', 'engraving'] #add colours appeal to more ages bro idk anymore, list
 
-    st.image(https://drive.google.com/uc?export=view&id=1q_C4suR8h5XpX0i86oHC7IQCPio6FGN7)
+    st.image('https://drive.google.com/uc?export=view&id=1q_C4suR8h5XpX0i86oHC7IQCPio6FGN7')
 
     st.write('customisations available:')
     for item in customise: #for loop
