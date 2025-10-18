@@ -34,7 +34,7 @@ for i in range(number):
 
     amount_of_wallet = number
     if amount_of_wallet > 0 and st.session_state[customise_pressed]:
-        st.image(['https://pngimg.com/uploads/wallet/wallet_PNG77078.png', "https://toppng.com/uploads/preview/leather-wallet-11530960452p1ggvjjey4.png"], caption = ['small', "medium"], width = 100)
+        st.image(['https://drive.google.com/file/d/1q_C4suR8h5XpX0i86oHC7IQCPio6FGN7/view?usp=drive_link', width = 300)
       
         size = st.selectbox("Select a size", ["small", "medium", "large"], key="size" + str(i)) #reyna's code + for loop for customers to customise each wallet
         if size == "medium":
@@ -68,7 +68,7 @@ for i in range(number):
         total_price += price_of_wallet
         
         if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart" + str(i)):
-            wallet_details = {"quantity":1,"size":size,"material":choice,"engravement":engraving_text}
+            wallet_details = {"size":size,"material":choice,"engravement":engraving_text}
             list_of_wallet_prices.append(price_of_wallet)
             list_of_materials.append(choice)
             st.session_state["cart"].append(wallet_details)
@@ -90,7 +90,7 @@ if material_counts['leather'] >= 2 and len(list_of_wallet_prices) >= 3:
     discounted_price = total_price - 0.5*(list_of_wallet_prices[2])
 
 for i, custom in enumerate(st.session_state["cart"], 1):
-    st.write(f"Wallet {i}: {custom}")
+    st.write(f"Wallet {i}: {size},{material},{engravement}")
     
 with st.sidebar:
     st.header("Your Cart")
