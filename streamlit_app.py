@@ -87,7 +87,7 @@ for i in range(number):
             st.session_state["cart"].append(wallet_details)
             st.success("Wallet {} added to cart!".format(i+1)) #add to cart
 
-        if st.session_state["remove_from cart"] and st.button("remove", key="remove_cart" + str(i):
+        if st.session_state["remove_from cart"] and st.button("remove", key="remove_cart" + str(i)):
             st.session_state["total_price"] -= price_of_wallet
             list_of_wallet_prices.remove(price_of_wallet)
             st.session_state["cart"].remove(wallet_details)
