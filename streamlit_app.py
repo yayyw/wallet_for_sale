@@ -81,6 +81,7 @@ for i in range(number):
 #Discounts
 from collections import Counter
 discounted_price = 0
+total_price  = st.session_state["total_price"]
 if total_price > 200:
     discounted_price = 0.9*(total_price)
 if 'leather' in list_of_materials and 'nylon' in list_of_materials:
@@ -102,7 +103,7 @@ with st.sidebar:
                 st.write(f"Wallet {i}: {custom['size']},{custom['material']}")
     else:
         st.write("No wallets added to cart yet.")
-    st.write("Your total =", st.session_state["total_price"])
+    st.write("Your total =", total_price)
     st.write("Total after discount=", discounted_price)
     st.button("Purchase")
     
