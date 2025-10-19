@@ -79,19 +79,22 @@ for i in range(number):
 
 
 #Discounts
+percentage_discount = []
 from collections import Counter
-discounted_price = 0
 total_price  = st.session_state["total_price"]
+discounted_price = total_price
+
 if total_price > 200:
-    discounted_price = 0.9*(total_price)
+    percentage_discount.append(0.9)
 if 'leather' in list_of_materials and 'nylon' in list_of_materials:
-    discounted_price = 0.85*(total_price)
-number_of_each_material = Counter(list_of_materials)
+    percentage_discount.append(0.85)
+for  i in percentage_discount:
+    discounted_price *= i
 
 material_counts = Counter(list_of_materials)
 
 if material_counts['leather'] >= 2 and len(list_of_wallet_prices) >= 3:
-    discounted_price = total_price - 0.5*(list_of_wallet_prices[2])
+    discounted_price -= 0.5*(list_of_wallet_prices[2])
     
 with st.sidebar:
     st.header("Your Cart")
