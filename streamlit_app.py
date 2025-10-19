@@ -17,9 +17,11 @@ if "cart" not in st.session_state:
 
 if "list_of_materials" not in st.session_state:
     st.session_state["list_of_materials"] = []
+list_of_materials = st.session_state["list_of_materials"]
 
 if "list_of_wallet_prices" not in st.session_state:
     st.session_state["list_of_wallet_prices"] = []
+list_of_wallet_prices = st.session_state["list_of_wallet_prices"]
 
 if "total_price" not in st.session_state:
     st.session_state["total_price"] = 0
