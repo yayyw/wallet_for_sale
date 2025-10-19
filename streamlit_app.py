@@ -17,7 +17,10 @@ if "cart" not in st.session_state:
 
 list_of_materials = []
 list_of_wallet_prices = []
-total_price = 0
+
+if "total_price" not in st.session_state:
+    st.session_state["total_price"] = 0
+
 for i in range(number):
     price_of_wallet = 20
     st.subheader("Wallet " + str(i + 1))
@@ -67,7 +70,7 @@ for i in range(number):
 
         
         if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart" + str(i)):
-            total_price += price_of_wallet
+            st.session_state["total_price"] += price_of_wallet
             wallet_details = {"size":size,"material":choice,"engravement":engraving_text}
             list_of_wallet_prices.append(price_of_wallet)
             list_of_materials.append(choice)
@@ -99,7 +102,7 @@ with st.sidebar:
                 st.write(f"Wallet {i}: {custom['size']},{custom['material']}")
     else:
         st.write("No wallets added to cart yet.")
-    st.write("Your total =", total_price)
+    st.write("Your total =", st.session_state["total_price"])
     st.write("Total after discount=", discounted_price)
     st.button("Purchase")
     
