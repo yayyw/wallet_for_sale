@@ -85,7 +85,7 @@ for i in range(number):
         if st.button("remove", key="remove_cart" + str(i)):
             st.session_state["total_price"] -= list_of_wallet_prices[i]
             wallet_details = {"size":size, "material":choice, "engravement":engraving_text}
-            st.session_state["cart"].remove(wallet_details[i])
+            del st.session_state["cart"][i]
             list_of_wallet_prices.remove(price_of_wallet[i])
             st.success(f"Wallet {i+1} removed from cart :(")
         if len(st.session_state["cart"]) == 0:
