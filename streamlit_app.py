@@ -93,7 +93,7 @@ for  i in percentage_discount:
 
 material_counts = Counter(list_of_materials)
 
-if material_counts['leather'] >= 2 and len(list_of_wallet_prices) >= 3:
+if material_counts['leather'] > 1 and len(list_of_wallet_prices) > 2:
     discounted_price -= 0.5*(list_of_wallet_prices[2])
     
 with st.sidebar:
