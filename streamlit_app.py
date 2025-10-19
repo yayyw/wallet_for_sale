@@ -15,8 +15,11 @@ for item in customise: #for loop
 if "cart" not in st.session_state:
     st.session_state["cart"]= []
 
-list_of_materials = []
-list_of_wallet_prices = []
+if "list_of_materials" not in st.session_state:
+    st.session_state["list_of_materials"] = []
+
+if "list_of_wallet_prices" not in st.session_state:
+    st.session_state["list_of_wallet_prices"] = []
 
 if "total_price" not in st.session_state:
     st.session_state["total_price"] = 0
@@ -86,10 +89,8 @@ discounted_price = total_price
 
 if total_price > 200:
     percentage_discount.append(0.9)
-    print('discount, spend over 200')
 if 'leather' in list_of_materials and 'nylon' in list_of_materials:
     percentage_discount.append(0.85)
-    print('discount, both leather and nylon')
 for  i in percentage_discount:
     discounted_price *= i
 
