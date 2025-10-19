@@ -86,8 +86,10 @@ discounted_price = total_price
 
 if total_price > 200:
     percentage_discount.append(0.9)
+    print('discount, spend over 200')
 if 'leather' in list_of_materials and 'nylon' in list_of_materials:
     percentage_discount.append(0.85)
+    print('discount, both leather and nylon')
 for  i in percentage_discount:
     discounted_price *= i
 
@@ -95,6 +97,7 @@ material_counts = Counter(list_of_materials)
 
 if material_counts['leather'] > 1 and len(list_of_wallet_prices) > 2:
     discounted_price -= 0.5*(list_of_wallet_prices[2])
+    print('discount, more than 1 leather')
     
 with st.sidebar:
     st.header("Your Cart")
