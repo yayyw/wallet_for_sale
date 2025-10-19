@@ -83,7 +83,8 @@ for i in range(number):
             st.success("Wallet {} added to cart!".format(i+1)) #add to cart
 
         if st.button("remove", key="remove_cart" + str(i)):
-            st.session_state["total_price"] -= price_of_wallet
+            st.session_state["total_price"] -= wallet_details[price_of_wallet]
+            st.session_state["cart"].remove(wallet_details)
             list_of_wallet_prices.remove(price_of_wallet)
             st.success("Wallet {} removed from cart :(".format(i+1))
         else:
@@ -107,7 +108,7 @@ material_counts = Counter(list_of_materials)
 
 if material_counts['leather'] > 1 and len(list_of_wallet_prices) > 2:
     discounted_price -= 0.5*(list_of_wallet_prices[2])
-    print('discount, more than 1 leather')
+    st.write('discount, more than 1 leather')
     
 with st.sidebar:
     st.header("Your Cart")
