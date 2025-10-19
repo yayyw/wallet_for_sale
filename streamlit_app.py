@@ -26,7 +26,7 @@ list_of_wallet_prices = st.session_state["list_of_wallet_prices"]
 if "remove_from_cart'" not in st.session_state:
     st.session_state["remove_from_cart"] = False
 
-remove = st.session_state["remove_from cart"]
+remove = st.session_state["remove_from_cart"]
 
 if "total_price" not in st.session_state:
     st.session_state["total_price"] = 0
