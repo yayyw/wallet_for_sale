@@ -84,7 +84,6 @@ if 'leather' in list_of_materials and 'nylon' in list_of_materials:
     discounted_price = 0.85*(total_price)
 number_of_each_material = Counter(list_of_materials)
 
-
 material_counts = Counter(list_of_materials)
 
 if material_counts['leather'] >= 2 and len(list_of_wallet_prices) >= 3:
@@ -108,5 +107,6 @@ with st.sidebar:
 file_name = "customer_data.txt"
 with open(file_name, "w") as file:
     file.write("This is a new file created using open().")
+    
 
 
