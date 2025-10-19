@@ -82,14 +82,14 @@ for i in range(number):
             st.session_state["cart"].append(wallet_details)
             st.success("Wallet {} added to cart!".format(i+1)) #add to cart
 
-        if st.button("remove", key="remove_cart" + str(i)):
+        if st.button("remove", key="remove_cart" + str(i)) and len(list_of_wallet_prices) > i:
             wallet_price = list_of_wallet_prices[i]
             st.session_state["total_price"] = max(0, st.session_state["total_price"] - wallet_price)
             del st.session_state["cart"][i]
             del list_of_wallet_prices[i]
             st.success(f"Wallet {i+1} removed from cart :(")
 
-        if len(st.session_state["cart"]) == 0:
+        elif len(st.session_state["cart"]) == 0:
             st.write("No wallets in cart")
 
 
