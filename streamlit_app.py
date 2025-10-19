@@ -86,6 +86,8 @@ for i in range(number):
             st.session_state["total_price"] -= price_of_wallet
             list_of_wallet_prices.remove(price_of_wallet)
             st.success("Wallet {} removed from cart :(".format(i+1))
+        else:
+            st.write("No wallet in cart at the moment:(")
 
 
 #Discounts
