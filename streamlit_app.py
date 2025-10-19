@@ -23,6 +23,11 @@ if "list_of_wallet_prices" not in st.session_state:
     st.session_state["list_of_wallet_prices"] = []
 list_of_wallet_prices = st.session_state["list_of_wallet_prices"]
 
+if "remove_from_cart'" not in st.session_state:
+    st.session_state["remove_from_cart"] = False
+
+remove = st.session_state["remove_from cart"]
+
 if "total_price" not in st.session_state:
     st.session_state["total_price"] = 0
 
@@ -76,11 +81,17 @@ for i in range(number):
         
         if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart" + str(i)):
             st.session_state["total_price"] += price_of_wallet
-            wallet_details = {"size":size,"material":choice,"engravement":engraving_text}
+            wallet_details = {"size":size, "material":choice, "engravement":engraving_text}
             list_of_wallet_prices.append(price_of_wallet)
             list_of_materials.append(choice)
             st.session_state["cart"].append(wallet_details)
             st.success("Wallet {} added to cart!".format(i+1)) #add to cart
+
+        if st.session_state["remove_from cart"] and st.button("remove", key="remove_cart" + str(i):
+            st.session_state["total_price"] -= price_of_wallet
+            list_of_wallet_prices.remove(price_of_wallet)
+            st.session_state["cart"].remove(wallet_details)
+            st.success("Wallet {} removed from cart :(".format(i+1))
 
 
 #Discounts
@@ -107,9 +118,9 @@ with st.sidebar:
     if "cart" in st.session_state and len(st.session_state["cart"]) > 0:
         for i, custom in enumerate(st.session_state["cart"], 1):
             if custom['engravement']:
-                st.write(f"Wallet {i}: {custom['size']},{custom['material']},{custom['engravement']}")
+                st.write(f"Wallet {i}: 'size:' {custom['size']}, 'material:' {custom['material']}, 'engravement:' {custom['engravement']}")
             else:
-                st.write(f"Wallet {i}: {custom['size']},{custom['material']}")
+                st.write(f"Wallet {i}: 'size:' {custom['size']}, 'material:' {custom['material']}")
     else:
         st.write("No wallets added to cart yet.")
     st.write("Your total =", total_price)
