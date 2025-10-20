@@ -1,4 +1,4 @@
-import streamlit as st
+stimport streamlit as st
 
 st.title("buy your wallet!!")
 
@@ -30,8 +30,9 @@ for i in range(number):
     price_of_wallet = 20
     st.subheader("Wallet " + str(i + 1))
 
-    customise_pressed = "customise_pressed" + str(i)
+    customise_pressed = "customise_pressed" + str(i) # unique for each wallet, prevents clashes
     engraving_pressed = "engraving_pressed" + str(i)
+    remove = "remove_from_cart" + str(i)
     
     if customise_pressed not in st.session_state: #visibility of button
         st.session_state[customise_pressed] = False
@@ -87,10 +88,10 @@ for i in range(number):
             st.session_state["total_price"] = max(0, st.session_state["total_price"] - wallet_price)
             del st.session_state["cart"][i]
             del list_of_wallet_prices[i]
-            st.success(f"Wallet {i+1} removed from cart :(")
+            st.success(f"Wallet {i+1} removed from cart :(") #i starts from 0
 
         elif len(st.session_state["cart"]) == 0:
-            st.write("No wallets in cart")
+            st.session_state[remove] = False
 
 
 #Discounts
