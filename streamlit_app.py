@@ -87,7 +87,7 @@ for i in range(number):
             st.session_state[remove] = False
 
         if st.button("remove from cart", key = "remove_from_cart" + str(i)):
-        st.session_state[customise_pressed] = True
+            st.session_state[customise_pressed] = True
             
         if st.button("remove from cart", key="remove_from_cart" + str(i)) and len(list_of_wallet_prices) > i:
             wallet_price = list_of_wallet_prices[i]
