@@ -85,8 +85,11 @@ for i in range(number):
 
         if remove not in st.session_state:
             st.session_state[remove] = False
+
+        if st.button("remove from cart", key = "remove_from_cart" + str(i)):
+        st.session_state[customise_pressed] = True
             
-        if st.button("remove", key="remove_cart" + str(i)) and len(list_of_wallet_prices) > i:
+        if st.button("remove from cart", key="remove_from_cart" + str(i)) and len(list_of_wallet_prices) > i:
             wallet_price = list_of_wallet_prices[i]
             st.session_state["total_price"] = max(0, st.session_state["total_price"] - wallet_price)
             del st.session_state["cart"][i]
