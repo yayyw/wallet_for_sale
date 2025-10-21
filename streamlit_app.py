@@ -114,7 +114,8 @@ with st.sidebar:
             if custom['engravement']:
                 st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}, engravement: {custom['engravement']}, price: ${custom['price']}")
             else:
-                st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}", price: ${custom['price']})
+                st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}, price: ${custom['price']}")
+
             # Add Remove button for each wallet
             if st.button(f"Remove wallet {i}", key=f"remove_{i}"):
                 # Remove price from total
