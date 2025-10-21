@@ -118,7 +118,7 @@ with st.sidebar:
             # Add Remove button for each wallet
             if st.button(f"Remove wallet {i}", key=f"remove_{i}"):
                 # Remove price from total
-                st.session_state["total_price"] -= custom["price"]
+                st.session_state["total_price"] -= custom[price]
                 # Remove from all lists
                 del st.session_state["cart"][i]
                 del st.session_state["list_of_wallet_prices"][i]
