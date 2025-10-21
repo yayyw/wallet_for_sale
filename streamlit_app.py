@@ -78,7 +78,7 @@ for i in range(number):
 
         if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart" + str(i)):
             st.session_state["total_price"] += price_of_wallet
-            wallet_details = {"size":size, "material":choice, "engravement":engraving_text}
+            wallet_details = {"size":size, "material":choice, "engravement":engraving_text, 'price' = price_of_wallet}
             list_of_wallet_prices.append(price_of_wallet)
             list_of_materials.append(choice)
             st.session_state["cart"].append(wallet_details)
@@ -112,11 +112,11 @@ with st.sidebar:
     if "cart" in st.session_state and len(st.session_state["cart"]) > 0:
         for i, custom in enumerate(st.session_state["cart"], 1):
             if custom['engravement']:
-                st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}, engravement: {custom['engravement']}")
+                st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}, engravement: {custom['engravement']}, price: {custom['price']}")
             else:
                 st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}")
             # Add Remove button for each wallet
-            if st.button(f"Remove wallet {i+1}", key=f"remove_{i}"):
+            if st.button(f"Remove wallet {i}", key=f"remove_{i}"):
                 # Remove price from total
                 st.session_state["total_price"] -= custom["price"]
                 # Remove from all lists
