@@ -102,7 +102,7 @@ for i in range(number):
             st.write(f"Wallet {i+1}: size={wallet['size']}, material={wallet['material']}")
             if st.button(f"Remove wallet {i+1}", key=f"remove_{i}"):
                 del st.session_state["cart"][i]
-                st.experimental_rerun()
+
 
 
 #Discounts
