@@ -127,7 +127,7 @@ with st.sidebar:
             del st.session_state["cart"][remove_index]
             del st.session_state["list_of_wallet_prices"][remove_index]
             del st.session_state["list_of_materials"][remove_index]
-            st.rerun
+            st.rerun()
 
     else:
         st.write("No wallets added to cart yet.")
