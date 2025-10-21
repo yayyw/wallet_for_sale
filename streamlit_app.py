@@ -82,11 +82,7 @@ for i in range(number):
             list_of_wallet_prices.append(price_of_wallet)
             list_of_materials.append(choice)
             st.session_state["cart"].append(wallet_details)
-            st.success("Wallet {} added to cart!".format(i+1)) #add to cart
-
-
-        wallet_details = {"size": size, "material": choice, "engravement": engraving_text, "price": price_of_wallet}
-        st.session_state["cart"].append(wallet_details)        
+            st.success("Wallet {} added to cart!".format(i+1)) #add to cart 
 
         if len(st.session_state["cart"]) == 0:
             st.write("No wallets in cart :(")
