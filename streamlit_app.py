@@ -112,17 +112,18 @@ with st.sidebar:
     if "cart" in st.session_state and len(st.session_state["cart"]) > 0:
         for i, custom in enumerate(st.session_state["cart"], 1):
             if custom['engravement']:
-                st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}, engravement: {custom['engravement']}, price_of_wallet: {custom['price']}")
+                st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}, engravement: {custom['engravement']}, price: ${custom['price']}")
             else:
-                st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}", price_of_wallet: {custom['price']})
+                st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}", price: ${custom['price']}})
             # Add Remove button for each wallet
             if st.button(f"Remove wallet {i}", key=f"remove_{i}"):
                 # Remove price from total
-                st.session_state["total_price"] -= wallet_details['price'][i]
+                st.session_state["total_price"] -= custom['price']
                 # Remove from all lists
                 del st.session_state["cart"][i]
                 del st.session_state["list_of_wallet_prices"][i]
                 del st.session_state["list_of_materials"][i]
+                st.experimental_rerun()
     else:
         st.write("No wallets added to cart yet.")
     st.write("Your total =", total_price)
@@ -131,11 +132,11 @@ with st.sidebar:
 
     if st.button("Purchase"):
         # Show receipt
-        st.dialog('Receipt')
+        @st.dialog('Receipt')
         for i, item in enumerate(st.session_state["cart"], 1):
 
             # Show wallet details
-            if st.session_state[engraving_pressed]:
+            if item['engravement']:
                 st.write(f"Wallet {i}: {item['size']}, {item['material']}, engraving: {item.get('engravement', 'None')}, price: ${item['price']}")
             else:
                st.write(f"Wallet {i}: {item['size']}, {item['material']}, price: ${item['price']}")
