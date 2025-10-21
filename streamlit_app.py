@@ -163,7 +163,7 @@ if "show_receipt" in st.session_state and st.session_state["show_receipt"]:
                 st.write(f"Wallet {i}: {item['size']}, {item['material']}, price: ${item['price']}")
         st.write(f"**Total: ${discounted_price:.2f}**")
         st.success("Thank you for your purchase! 🎉")
-        st.balloon()
+        st.balloons()
         
 file_name = "customer_data.txt"
 with open(file_name, "w") as file:
