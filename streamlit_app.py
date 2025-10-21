@@ -112,9 +112,9 @@ with st.sidebar:
     if "cart" in st.session_state and len(st.session_state["cart"]) > 0:
         for i, custom in enumerate(st.session_state["cart"]):
             if custom['engravement']:
-                st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}, engravement: {custom['engravement']}, price: ${custom['price']}")
+                st.write(f"Wallet {i+1}: size: {custom['size']}, material: {custom['material']}, engravement: {custom['engravement']}, price: ${custom['price']}")
             else:
-                st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}, price: ${custom['price']}")
+                st.write(f"Wallet {i+1}: size: {custom['size']}, material: {custom['material']}, price: ${custom['price']}")
 
             # Add Remove button for each wallet
             if st.button(f"Remove wallet {i+1}", key=f"remove_{i}"):
@@ -124,7 +124,7 @@ with st.sidebar:
                 del st.session_state["cart"][i]
                 del st.session_state["list_of_wallet_prices"][i]
                 del st.session_state["list_of_materials"][i]
-                st.experimental_rerun()
+
     else:
         st.write("No wallets added to cart yet.")
     st.write("Your total =", total_price)
