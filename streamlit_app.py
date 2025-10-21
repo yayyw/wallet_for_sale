@@ -78,7 +78,7 @@ for i in range(number):
 
         if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart" + str(i)):
             st.session_state["total_price"] += price_of_wallet
-            wallet_details = {"size":size, "material":choice, "engravement":engraving_text, 'price' = price_of_wallet}
+            wallet_details = {"size":size, "material":choice, "engravement":engraving_text, 'price' : price_of_wallet}
             list_of_wallet_prices.append(price_of_wallet)
             list_of_materials.append(choice)
             st.session_state["cart"].append(wallet_details)
