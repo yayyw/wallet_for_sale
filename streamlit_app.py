@@ -88,7 +88,7 @@ for i in range(number):
         wallet_details = {"size": size, "material": choice, "engravement": engraving_text, "price": price_of_wallet}
         st.session_state["cart"].append(wallet_details)        
 
-        elif len(st.session_state["cart"]) == 0:
+        if len(st.session_state["cart"]) == 0:
             st.write("No wallets in cart :(")
 
 
