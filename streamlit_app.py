@@ -43,8 +43,7 @@ for i in range(number):
         st.session_state[customise_pressed] = True #when button pressed
 
     amount_of_wallet = number
-    wallet_details = {"size": size, "material": choice, "engravement": engraving_text, "price": price_of_wallet}
-    st.session_state["cart"].append(wallet_details)
+
     if amount_of_wallet > 0 and st.session_state[customise_pressed]:
       
         size = st.selectbox("Select a size", ["small", "medium", "large"], key="size" + str(i)) #reyna's code + for loop for customers to customise each wallet
@@ -77,7 +76,8 @@ for i in range(number):
             st.write("Engraving adds $10")
             price_of_wallet += 10
 
-
+        wallet_details = {"size": size, "material": choice, "engravement": engraving_text, "price": price_of_wallet}
+        st.session_state["cart"].append(wallet_details)
         
         if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart" + str(i)):
             st.session_state["total_price"] += price_of_wallet
