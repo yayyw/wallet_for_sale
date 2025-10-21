@@ -43,6 +43,8 @@ for i in range(number):
         st.session_state[customise_pressed] = True #when button pressed
 
     amount_of_wallet = number
+    wallet_details = {"size": size, "material": choice, "engravement": engraving_text, "price": price_of_wallet}
+    st.session_state["cart"].append(wallet_details)
     if amount_of_wallet > 0 and st.session_state[customise_pressed]:
       
         size = st.selectbox("Select a size", ["small", "medium", "large"], key="size" + str(i)) #reyna's code + for loop for customers to customise each wallet
@@ -54,6 +56,7 @@ for i in range(number):
             price_of_wallet += 20
         else:
             st.write("small adds $0")
+            
         
         choice = st.selectbox("Select one material", ["leather", "nylon", "canvas"], key = "material" + str(i))
         
@@ -74,6 +77,7 @@ for i in range(number):
             st.write("Engraving adds $10")
             price_of_wallet += 10
 
+
         
         if st.session_state[customise_pressed] and st.button("Add to cart", key="add_cart" + str(i)):
             st.session_state["total_price"] += price_of_wallet
@@ -83,15 +87,22 @@ for i in range(number):
             st.session_state["cart"].append(wallet_details)
             st.success("Wallet {} added to cart!".format(i+1)) #add to cart
 
-        if st.button("remove from cart", key="remove_from_cart" + str(i)) and len(list_of_wallet_prices) > i:
-            wallet_price = list_of_wallet_prices[i]
-            st.session_state["total_price"] = max(0, st.session_state["total_price"] - wallet_price)
-            del st.session_state["cart"][i]
-            del list_of_wallet_prices[i]
-            st.success(f"Wallet {i+1} removed from cart") #i starts from 0
+        #if st.button("remove from cart", key="remove_from_cart" + str(i)) and len(list_of_wallet_prices) > i:
+         #   wallet_price = list_of_wallet_prices[i]
+          #  st.session_state["total_price"] = max(0, st.session_state["total_price"] - wallet_price)
+           # del st.session_state["cart"][i]
+            #del list_of_wallet_prices[i]
+            #st.success(f"Wallet {i+1} removed from cart") #i starts from 0
+        
 
         elif len(st.session_state["cart"]) == 0:
             st.write("No wallets in cart :(")
+
+        for i, wallet in enumerate(st.session_state["cart"]):
+            st.write(f"Wallet {i+1}: size={wallet['size']}, material={wallet['material']}")
+            if st.button(f"Remove wallet {i+1}", key=f"remove_{i}"):
+                del st.session_state["cart"][i]
+                st.experimental_rerun()
 
 
 #Discounts
@@ -126,13 +137,14 @@ with st.sidebar:
     st.write("Your total =", total_price)
     st.write("Total after discount=", discounted_price)
     #st.button("Purchase")
-    if st.button("Purchased"):
+
+    if st.button("Purchase"):
     # Show receipt
-        st.write("Receipt")
-        for i, item in enumerate(st.session_state["cart"], 1):
-            st.write(f"Wallet{i}. {custom['size']},{custom['material']} - ${price_of_wallet}")
-        st.write(f"**Total: ${discounted_price}**")
-        st.success("Thank you for your purchase!")
+    st.write("Receipt")
+    for i, item in enumerate(st.session_state["cart"], 1):
+        st.write(f"Wallet {i}: {item['size']}, {item['material']}, engraving: {item.get('engravement', 'None')}, price: ${item['price']}")
+    st.write(f"**Total: ${discounted_price}**")
+    st.success("Thank you for your purchase!")
     
 
     
