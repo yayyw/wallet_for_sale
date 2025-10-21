@@ -126,6 +126,16 @@ with st.sidebar:
     st.write("Your total =", total_price)
     st.write("Total after discount=", discounted_price)
     st.button("Purchase")
+    purchased_pressed = 'purchased_pressed'
+    if st.button("Purchased"):
+    # Show receipt
+        st.write("Receipt")
+        for i, item in enumerate(cart, 1):
+            st.write(f"Wallet{i}. {custom['size']},{custom['material']} - ${price_of_wallet[i]}")
+        st.write(f"**Total: ${discounted_price}**")
+        st.success("Thank you for your purchase!")
+    
+
     
 
 file_name = "customer_data.txt"
