@@ -117,7 +117,7 @@ with st.sidebar:
                 st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}, price: ${custom['price']}")
 
             # Add Remove button for each wallet
-            if st.button(f"Remove wallet {i}", key=f"remove_{i}"):
+            if st.button(f"Remove wallet {i+1}", key=f"remove_{i}"):
                 # Remove price from total
                 st.session_state["total_price"] -= custom['price']
                 # Remove from all lists
