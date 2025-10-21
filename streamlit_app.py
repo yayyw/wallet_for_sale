@@ -55,8 +55,7 @@ for i in range(number):
             price_of_wallet += 20
         else:
             st.write("small adds $0")
-            
-        
+         
         choice = st.selectbox("Select one material", ["leather", "nylon", "canvas"], key = "material" + str(i))
         
         if choice == "leather":
@@ -86,7 +85,6 @@ for i in range(number):
 
         if len(st.session_state["cart"]) == 0:
             st.write("No wallets in cart :(")
-
 
 #Discounts
 percentage_discount = []
@@ -165,11 +163,8 @@ if "show_receipt" in st.session_state and st.session_state["show_receipt"]:
                 st.write(f"Wallet {i}: {item['size']}, {item['material']}, price: ${item['price']}")
         st.write(f"**Total: ${discounted_price:.2f}**")
         st.success("Thank you for your purchase! 🎉")
-    
-
+        st.balloon()
+        
 file_name = "customer_data.txt"
 with open(file_name, "w") as file:
     file.write("This is a new file created using open().")
-    
-
-
