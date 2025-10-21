@@ -109,6 +109,7 @@ if material_counts['leather'] > 1 and len(list_of_wallet_prices) > 2:
     
 with st.sidebar:
     st.header("Your Cart")
+    remove_index = None  # To keep track of wallet to remove
     if "cart" in st.session_state and len(st.session_state["cart"]) > 0:
         for i, custom in enumerate(st.session_state["cart"]):
             if custom['engravement']:
@@ -118,12 +119,14 @@ with st.sidebar:
 
             # Add Remove button for each wallet
             if st.button(f"Remove wallet {i+1}", key=f"remove_{i}"):
-                # Remove price from total
-                st.session_state["total_price"] -= custom['price']
-                # Remove from all lists
-                del st.session_state["cart"][i]
-                del st.session_state["list_of_wallet_prices"][i]
-                del st.session_state["list_of_materials"][i]
+                remove_index = i
+        if remove_index is not None:
+            # Adjust total price
+            st.session_state["total_price"] -= st.session_state["cart"][remove_index]['price']
+            # Remove from all lists
+            del st.session_state["cart"][remove_index]
+            del st.session_state["list_of_wallet_prices"][remove_index]
+            del st.session_state["list_of_materials"][remove_index]
 
     else:
         st.write("No wallets added to cart yet.")
