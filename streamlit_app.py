@@ -130,7 +130,7 @@ with st.sidebar:
     # Show receipt
         st.write("Receipt")
         for i, item in enumerate(st.session_state["cart"], 1):
-            st.write(f"Wallet{i}. {custom['size']},{custom['material']} - ${price_of_wallet[i]}")
+            st.write(f"Wallet{i}. {custom['size']},{custom['material']} - ${price_of_wallet}")
         st.write(f"**Total: ${discounted_price}**")
         st.success("Thank you for your purchase!")
     
