@@ -125,12 +125,11 @@ with st.sidebar:
         st.write("No wallets added to cart yet.")
     st.write("Your total =", total_price)
     st.write("Total after discount=", discounted_price)
-    st.button("Purchase")
-    purchased_pressed = 'purchased_pressed'
+    #st.button("Purchase")
     if st.button("Purchased"):
     # Show receipt
         st.write("Receipt")
-        for i, item in enumerate(cart, 1):
+        for i, item in enumerate(st.session_state["cart"], 1):
             st.write(f"Wallet{i}. {custom['size']},{custom['material']} - ${price_of_wallet[i]}")
         st.write(f"**Total: ${discounted_price}**")
         st.success("Thank you for your purchase!")
