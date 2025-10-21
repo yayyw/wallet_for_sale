@@ -140,11 +140,11 @@ with st.sidebar:
 
     if st.button("Purchase"):
     # Show receipt
-    st.write("Receipt")
-    for i, item in enumerate(st.session_state["cart"], 1):
-        st.write(f"Wallet {i}: {item['size']}, {item['material']}, engraving: {item.get('engravement', 'None')}, price: ${item['price']}")
-    st.write(f"**Total: ${discounted_price}**")
-    st.success("Thank you for your purchase!")
+        st.write("Receipt")
+        for i, item in enumerate(st.session_state["cart"], 1):
+            st.write(f"Wallet {i}: {item['size']}, {item['material']}, engraving: {item.get('engravement', 'None')}, price: ${item['price']}")
+        st.write(f"**Total: ${discounted_price}**")
+        st.success("Thank you for your purchase!")
     
 
     
