@@ -1,3 +1,4 @@
+### SCO1 - Rui Ling, Reyna, Ethel. Team 6
 import streamlit as st
 
 st.title("buy your wallet!!")
