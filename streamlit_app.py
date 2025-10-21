@@ -167,7 +167,7 @@ with st.sidebar:
 
     # Show receipt after clicking "Purchase"
 if "show_receipt" in st.session_state and st.session_state["show_receipt"]:
-    with st.expander("🧾 Receipt", expanded=True):
+    with st.dialog("🧾 Receipt", expanded=True):
         for i, item in enumerate(st.session_state["cart"], 1):
             if item['engravement']:
                 st.write(f"Wallet {i}: {item['size']}, {item['material']}, engraving: {item.get('engravement', 'None')}, price: ${item['price']}")
@@ -175,10 +175,6 @@ if "show_receipt" in st.session_state and st.session_state["show_receipt"]:
                 st.write(f"Wallet {i}: {item['size']}, {item['material']}, price: ${item['price']}")
         st.write(f"**Total: ${discounted_price:.2f}**")
         st.success("Thank you for your purchase! 🎉")
-
-
-        st.write(f"**Total: ${discounted_price}**")
-        st.success("Thank you for your purchase!")
     
 
 file_name = "customer_data.txt"
