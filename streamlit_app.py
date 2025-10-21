@@ -151,16 +151,31 @@ with st.sidebar:
     st.write("Your total =", total_price)
     st.write("Total after discount=", discounted_price)
 
-    if st.button("Purchase"):
+#    if st.button("Purchase"):
         # Show receipt
-        st.write('Receipt')
-        for i, item in enumerate(st.session_state["cart"], 1):
+  #      st.write('Receipt')
+   #     for i, item in enumerate(st.session_state["cart"], 1):
 
             # Show wallet details
+ #           if item['engravement']:
+  #              st.write(f"Wallet {i}: {item['size']}, {item['material']}, engraving: {item.get('engravement', 'None')}, price: ${item['price']}")
+   #         else:
+    #           st.write(f"Wallet {i}: {item['size']}, {item['material']}, price: ${item['price']}")
+
+    if st.button("Purchase"):
+    st.session_state["show_receipt"] = True
+
+    # Show receipt after clicking "Purchase"
+if "show_receipt" in st.session_state and st.session_state["show_receipt"]:
+    with st.expander("🧾 Receipt", expanded=True):
+        for i, item in enumerate(st.session_state["cart"], 1):
             if item['engravement']:
                 st.write(f"Wallet {i}: {item['size']}, {item['material']}, engraving: {item.get('engravement', 'None')}, price: ${item['price']}")
             else:
-               st.write(f"Wallet {i}: {item['size']}, {item['material']}, price: ${item['price']}")
+                st.write(f"Wallet {i}: {item['size']}, {item['material']}, price: ${item['price']}")
+        st.write(f"**Total: ${discounted_price:.2f}**")
+        st.success("Thank you for your purchase! 🎉")
+
 
         st.write(f"**Total: ${discounted_price}**")
         st.success("Thank you for your purchase!")
