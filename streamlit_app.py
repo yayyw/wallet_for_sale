@@ -110,7 +110,7 @@ if material_counts['leather'] > 1 and len(list_of_wallet_prices) > 2:
 with st.sidebar:
     st.header("Your Cart")
     if "cart" in st.session_state and len(st.session_state["cart"]) > 0:
-        for i, custom in enumerate(st.session_state["cart"], 1):
+        for i, custom in enumerate(st.session_state["cart"]):
             if custom['engravement']:
                 st.write(f"Wallet {i}: size: {custom['size']}, material: {custom['material']}, engravement: {custom['engravement']}, price: ${custom['price']}")
             else:
