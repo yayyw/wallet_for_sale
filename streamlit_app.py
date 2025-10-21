@@ -167,7 +167,7 @@ with st.sidebar:
 
     # Show receipt after clicking "Purchase"
 if "show_receipt" in st.session_state and st.session_state["show_receipt"]:
-    with st.dialog("🧾 Receipt"):
+    with st.popover("🧾 Receipt"):
         for i, item in enumerate(st.session_state["cart"], 1):
             if item['engravement']:
                 st.write(f"Wallet {i}: {item['size']}, {item['material']}, engraving: {item.get('engravement', 'None')}, price: ${item['price']}")
