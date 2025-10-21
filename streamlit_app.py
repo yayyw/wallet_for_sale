@@ -127,6 +127,7 @@ with st.sidebar:
             del st.session_state["cart"][remove_index]
             del st.session_state["list_of_wallet_prices"][remove_index]
             del st.session_state["list_of_materials"][remove_index]
+            st.rerun
 
     else:
         st.write("No wallets added to cart yet.")
@@ -150,17 +151,6 @@ with st.sidebar:
 
     st.write("Your total =", total_price)
     st.write("Total after discount=", discounted_price)
-
-#    if st.button("Purchase"):
-        # Show receipt
-  #      st.write('Receipt')
-   #     for i, item in enumerate(st.session_state["cart"], 1):
-
-            # Show wallet details
- #           if item['engravement']:
-  #              st.write(f"Wallet {i}: {item['size']}, {item['material']}, engraving: {item.get('engravement', 'None')}, price: ${item['price']}")
-   #         else:
-    #           st.write(f"Wallet {i}: {item['size']}, {item['material']}, price: ${item['price']}")
 
     if st.button("Purchase"):
         st.session_state["show_receipt"] = True
