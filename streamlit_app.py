@@ -130,9 +130,26 @@ with st.sidebar:
 
     else:
         st.write("No wallets added to cart yet.")
+    # Recalculate total and discount AFTER any removal
+    total_price = sum(item['price'] for item in st.session_state["cart"])
+    discounted_price = total_price
+    percentage_discount = []
+
+    from collections import Counter
+    material_counts = Counter(st.session_state["list_of_materials"])
+
+    if total_price > 200:
+        percentage_discount.append(0.9)
+    if 'leather' in st.session_state["list_of_materials"] and 'nylon' in st.session_state["list_of_materials"]:
+        percentage_discount.append(0.85)
+    for d in percentage_discount:
+        discounted_price *= d
+    if material_counts['leather'] > 1 and len(st.session_state["list_of_wallet_prices"]) > 2:
+        discounted_price -= 0.5 * st.session_state["list_of_wallet_prices"][2]
+        st.write('discount, more than 1 leather')
+
     st.write("Your total =", total_price)
     st.write("Total after discount=", discounted_price)
-    #st.button("Purchase")
 
     if st.button("Purchase"):
         # Show receipt
