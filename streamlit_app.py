@@ -163,7 +163,7 @@ with st.sidebar:
     #           st.write(f"Wallet {i}: {item['size']}, {item['material']}, price: ${item['price']}")
 
     if st.button("Purchase"):
-    st.session_state["show_receipt"] = True
+        st.session_state["show_receipt"] = True
 
     # Show receipt after clicking "Purchase"
 if "show_receipt" in st.session_state and st.session_state["show_receipt"]:
