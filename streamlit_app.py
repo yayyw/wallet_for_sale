@@ -135,7 +135,7 @@ with st.sidebar:
 
     if st.button("Purchase"):
         # Show receipt
-        @st.dialog('Receipt')
+        st.dialog('Receipt')
         for i, item in enumerate(st.session_state["cart"], 1):
 
             # Show wallet details
